@@ -16,5 +16,11 @@ Every decision about a source, a rule or the system, with the date, what was dec
 
 ## 2026-11-08 (later)
 
-- **Page home: GitHub Pages, public repo (Dakota).** Free and one link. Tradeoff: the repo and the page are public to anyone who has the link. The data is public bids only. The page carries a noindex tag and the site serves a robots.txt that blocks all crawlers (WEB 4). No keys are ever in the repo.
+- **Page home: GitHub Pages, public repo (Dakota).** Free and one link. Tradeoff: the repo and the page are public to anyone who has the link. The data is public bids only. The page carries a noindex tag, which is what keeps it out of search engines (WEB 4). A robots.txt is also published, but it sits under /gov-bid-engine/ and crawlers only read robots.txt at the site root, so it has no effect; checked live in Chrome 2026-11-08. No keys are ever in the repo.
 - **Reach test, first result (manual test run 42553179493).** 18 of 20 load from GitHub. Town of Ravenel returned a 403 challenge page (BLK 2, data center traffic turned away). City of Pickens closed the connection before answering, on both robots.txt and the page (not yet classed; watch on the scheduled run). Both go to the BLK 2 path in phase 2: look for an email alert or RSS channel, else manual in Chrome.
+
+- **NAICS tagging for bids with no code (Dakota).** Free rules first (crosswalks and keyword rules). Measure how many bids stay untagged, then decide on AI tagging with real numbers.
+- **First shared platform after South Carolina (Dakota).** The one with the most agencies whose listings are public, decided after the source reviews (PRD default).
+- **Daily email alerts (Dakota).** Phase 6, as planned.
+- **Paid Apify test runs (Dakota).** Ask before every test run: name the scraper, the run size and the most it can cost, and wait for a yes. No standing approval.
+- **Outside code review result (Opus, 2026-11-08).** rfp-scraper (MIT, Copyright (c) 2025 Jason Staker): 89 scrapers, 25 with useful patterns (SCBO, Bonfire feed, OpenGov API, 7 state data feeds), none for SAM.gov. Not copied as is: every scraper sends a fake browser user agent (breaks COL 14), 48 need Selenium on Windows, the SC one turns off TLS checks, and the author says it is unmaintained. Rule: reuse the source knowledge, rewrite the code in our collectors, keep the MIT notice in THIRD_PARTY_NOTICES for any file adapted from it. OpenRFPs (GPL 3.0, 2014) used only as a source list; all its URLs have moved. Full notes: research/Gov-Bid-Engine-reuse-review-2026-11-08.md in Dakota's project folder.
