@@ -51,7 +51,7 @@ h2{font-size:15px;margin:0 0 8px}
       <select id="state"><option value="">All states</option></select>
       <input id="naics" placeholder="NAICS code or prefix">
       <select id="ntype"><option value="">All notice types</option></select>
-      <select id="status"><option value="open">Open</option><option value="">Any status</option><option value="closed">Closed</option></select>
+      <select id="status"><option value="open">Open</option><option value="any">Any status</option><option value="closed">Closed</option></select>
       <select id="aside"><option value="">Any set aside</option></select>
       <select id="src"><option value="">All sources</option></select>
       <select id="sort"><option value="posted">Posted newest</option><option value="due">Due soonest</option></select>
@@ -72,6 +72,7 @@ h2{font-size:15px;margin:0 0 8px}
 const DATA = /*__DATA__*/null;
 const $ = id => document.getElementById(id);
 function fmt(t){ if(!t) return "never"; const d=new Date(t); return isNaN(d)?t:d.toLocaleString("en-US",{timeZone:"America/New_York",dateStyle:"medium",timeStyle:"short"})+" ET"; }
+function safeUrl(u){ return /^https?:\/\//i.test(String(u||""))?u:"#"; }
 function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 function daysLeft(d){ if(!d) return ""; const n=Math.ceil((new Date(d.length===10?d+"T23:59:59":d)-new Date())/864e5); return n<0?"(closed)":`(${n} days left)`; }
 
@@ -88,7 +89,7 @@ function showStatus(st){
 function detail(b){
   const rows=[["Solicitation number",b.solicitation_number],["Notice type",b.notice_type],["Status",b.status],["Posted",b.posted_date],["Due",b.due_at],["Set aside",b.set_aside],["City",b.city],["First seen",fmt(b.first_seen)]];
   const naics=(b.naics||[]).map(n=>`${esc(n.code)} ${esc(n.name||"")} (${esc(n.origin||"")})`).join("<br>");
-  const links=(b.source_links||[]).map(l=>`<a href="${esc(l.listing_url)}" target="_blank" rel="noopener">${esc(l.source_id)} listing</a>${l.documents_url?` · <a href="${esc(l.documents_url)}" target="_blank" rel="noopener">documents</a> (${esc(l.documents_access)})`:""}`).join("<br>");
+  const links=(b.source_links||[]).map(l=>`<a href="${esc(safeUrl(l.listing_url))}" target="_blank" rel="noopener">${esc(l.source_id)} listing</a>${l.documents_url?` · <a href="${esc(safeUrl(l.documents_url))}" target="_blank" rel="noopener">documents</a> (${esc(l.documents_access)})`:""}`).join("<br>");
   return `<details><summary>Details</summary><dl>${rows.filter(r=>r[1]).map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join("")}<dt>NAICS</dt><dd>${naics||"none"}</dd><dt>Sources</dt><dd>${links}</dd>${b.description_text?`<dt>Description</dt><dd>${esc(b.description_text)}</dd>`:""}</dl></details>`;
 }
 
@@ -107,7 +108,7 @@ function start(bids, st){
     shown=[];
     bids.forEach((b,i)=>{
       if(s && b.state!==s) return; if(t && b.notice_type!==t) return; if(a && b.set_aside!==a) return;
-      if(stt && (b.status||"open")!==stt) return; if(nw && !b.is_new) return;
+      if(stt && stt!=="any" && (b.status||"open")!==stt) return; if(nw && !b.is_new) return;
       if(sr && !(b.sources||[]).includes(sr)) return;
       if(n && !(b.naics||[]).some(c=>String(c.code).startsWith(n))) return;
       if(q && !hay[i].includes(q)) return;
@@ -124,7 +125,7 @@ function start(bids, st){
     list.innerHTML=shown.slice(0,300).map(b=>{
       const link=(b.source_links||[])[0]||{};
       return `<div class="bid">
-      <a href="${esc(link.listing_url)}" target="_blank" rel="noopener">${esc(b.title)}</a>
+      <a href="${esc(safeUrl(link.listing_url))}" target="_blank" rel="noopener">${esc(b.title)}</a>
       ${b.is_new?'<span class="tag newtag">New</span>':""}
       <div class="meta">${esc(b.agency)} · ${esc(b.state)}${b.county?" · "+esc(b.county):""} · ${esc(b.notice_type||"")}${b.set_aside?" · "+esc(b.set_aside):""}</div>
       <div class="meta">Posted ${esc(b.posted_date||"?")} · Due ${esc(b.due_at||"?")} ${daysLeft(b.due_at)}</div>

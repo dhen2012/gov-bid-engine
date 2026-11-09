@@ -151,7 +151,7 @@ def merge(index: dict, bid: dict, now: str, run_date: str, changes: list) -> str
         return "new"
     kind = "same"
     for f in TRACKED_FIELDS:
-        if bid.get(f) and bid.get(f) != old.get(f):
+        if (bid.get(f) or "") != (old.get(f) or ""):
             changes.append({"bid_id": bid["bid_id"], "changed_at": now, "field": f,
                             "old_value": old.get(f), "new_value": bid.get(f)})
             kind = "changed"
@@ -162,11 +162,15 @@ def merge(index: dict, bid: dict, now: str, run_date: str, changes: list) -> str
     return kind
 
 
-def refresh_status(index: dict, today: dt.date) -> None:
-    """Bids not seen today still close when their due date passes."""
+def refresh_status(index: dict, today: dt.date, now: str, changes: list) -> None:
+    """Bids not seen today still close when their due date passes. Logged as a change."""
     for b in index.values():
         if b.get("status") == "open":
-            b["status"] = status_of(b.get("notice_type", ""), b.get("due_at", ""), None, today)
+            new = status_of(b.get("notice_type", ""), b.get("due_at", ""), None, today)
+            if new != "open":
+                changes.append({"bid_id": b["bid_id"], "changed_at": now, "field": "status",
+                                "old_value": "open", "new_value": new})
+                b["status"] = new
 
 
 def archive_old(index: dict, today: dt.date) -> int:
@@ -219,7 +223,7 @@ def main(run_date: str | None = None) -> dict:
                 daily.append(index[bid["bid_id"]])
         counts[sid] = c
 
-    refresh_status(index, today)
+    refresh_status(index, today, now, changes)
     for b in index.values():
         b["is_new"] = b.get("first_seen_date") == run_date
 

@@ -73,3 +73,46 @@ def test_notice_types():
     assert store.normalize_notice_type("Presolicitation") == "presolicitation"
     assert store.normalize_notice_type("Request for Quotation") == "RFQ"
     assert store.normalize_notice_type("") == "other"
+
+
+class FakeResp:
+    def __init__(self, status, body=None, text=""):
+        self.status_code, self._body, self.text, self.headers = status, body, text, {}
+
+    def json(self):
+        if self._body is None:
+            raise ValueError("not json")
+        return self._body
+
+
+def run_fake(monkeypatch, tmp_path, replies, cap=8):
+    calls = []
+
+    class FakeSession:
+        headers = {}
+
+        def get(self, url, params=None, timeout=None):
+            calls.append(dict(params or {}))
+            return replies(len(calls))
+
+    monkeypatch.setattr(sam_gov.requests, "Session", FakeSession)
+    monkeypatch.setattr(sam_gov.time, "sleep", lambda s: None)
+    monkeypatch.setattr(sam_gov, "MAX_REQUESTS", cap)
+    monkeypatch.setenv("SAM_GOV_API_KEY", "SECRETKEY")
+    out = tmp_path / "out.json"
+    sam_gov.main("sam_gov", str(out))
+    return calls, json.loads(out.read_text())
+
+
+def test_cap_holds_even_during_retries(monkeypatch, tmp_path):
+    calls, res = run_fake(monkeypatch, tmp_path, lambda n: FakeResp(503, text="down"), cap=2)
+    assert len(calls) == 2 and res["requests"] == 2
+
+
+def test_non_json_reply_keeps_earlier_pages(monkeypatch, tmp_path):
+    page = {"totalRecords": 2000, "opportunitiesData": json.loads(FIX.read_text())["opportunitiesData"]}
+    calls, res = run_fake(monkeypatch, tmp_path,
+                          lambda n: FakeResp(200, page) if n == 1 else FakeResp(200, None, "<html>maintenance SECRETKEY</html>"))
+    assert len(res["items"]) == 2
+    assert any("not JSON" in e for e in res["errors"])
+    assert "SECRETKEY" not in json.dumps(res)

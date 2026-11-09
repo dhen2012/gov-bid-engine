@@ -22,7 +22,11 @@ def main() -> int:
     print("census status", r.status_code)
     if r.status_code != 200:
         return 0  # the engine runs without names; the page shows codes only
-    wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True)
+    try:
+        wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True)
+    except Exception as e:  # not an Excel file; run on without names
+        print("census reply was not a readable xlsx:", type(e).__name__)
+        return 0
     ws = wb.active
     rows = []
     for row in ws.iter_rows(values_only=True):

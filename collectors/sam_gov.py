@@ -119,6 +119,8 @@ def main(source_id: str, out_file: str) -> int:
             break
         wait, resp = 2, None
         for attempt in range(3):
+            if result["requests"] >= MAX_REQUESTS:
+                break
             try:
                 resp = session.get(API, params=params, timeout=60)
             except requests.RequestException as e:
@@ -144,7 +146,11 @@ def main(source_id: str, out_file: str) -> int:
         if resp.status_code != 200:
             result["errors"].append(f"status {resp.status_code}: {scrub(resp.text, key)[:300]}")
             break
-        body = resp.json()
+        try:
+            body = resp.json()
+        except ValueError:
+            result["errors"].append(f"status 200 but the reply was not JSON: {scrub(resp.text, key)[:200]}")
+            break
         total = body.get("totalRecords", 0)
         batch = body.get("opportunitiesData") or []
         result["items"].extend(to_standard(r, source_id, collected_at) for r in batch)

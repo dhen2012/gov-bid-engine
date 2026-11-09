@@ -43,6 +43,7 @@ jobs:
         run: python -m engine.build_page
 
       - name: Save data and page to the repo
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "gov-bid-engine bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -52,12 +53,14 @@ jobs:
           git push origin HEAD:main
 
       - name: Upload page for GitHub Pages
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
   deploy:
     needs: run
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       pages: write
