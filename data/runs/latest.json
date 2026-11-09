@@ -1,0 +1,17 @@
+{
+  "collectors": [],
+  "end": "2026-11-09T02:51:42+00:00",
+  "reach_test": {
+    "counts": {
+      "error": 1,
+      "loads": 18,
+      "turned away (challenge page)": 1
+    },
+    "result": "ok"
+  },
+  "result": "ok",
+  "run_date_et": "2026-11-08",
+  "run_id": "42553179493",
+  "start": "2026-11-09T02:51:25+00:00",
+  "trigger": "workflow_dispatch"
+}

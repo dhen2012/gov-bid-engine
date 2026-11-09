@@ -1,17 +1,162 @@
 {
-  "built_at": "2026-11-09T02:50:42+00:00",
+  "built_at": "2026-11-09T02:51:42+00:00",
   "last_run": {
-    "end": null,
-    "result": null,
-    "run_id": null,
-    "start": null,
-    "trigger": null
+    "end": "2026-11-09T02:51:42+00:00",
+    "result": "ok",
+    "run_id": "42553179493",
+    "start": "2026-11-09T02:51:25+00:00",
+    "trigger": "workflow_dispatch"
   },
   "new_today": 0,
   "reach_test": {
-    "counts": {},
-    "results": [],
-    "run_at": null
+    "counts": {
+      "error": 1,
+      "loads": 18,
+      "turned away (challenge page)": 1
+    },
+    "results": [
+      {
+        "entity_name": "Town of Moncks Corner",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://monckscornersc.gov/business/current-bids-projects"
+      },
+      {
+        "entity_name": "North Charleston Sewer District",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://ncsd.sc.gov/current-bid-opportunities/"
+      },
+      {
+        "entity_name": "Town of James Island",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.jamesislandsc.us/current-bids"
+      },
+      {
+        "entity_name": "Town of Cheraw",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.cheraw.com/government/business_opportunities.php"
+      },
+      {
+        "entity_name": "Charleston County Park and Recreation Commission",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.ccprc.com/bids/"
+      },
+      {
+        "entity_name": "Town of Patrick",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.townofpatrick.com/government/invitations_to_bid.php"
+      },
+      {
+        "entity_name": "City of Greenwood",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.cityofgreenwoodsc.com/departments/procurement/current_projects_new.php"
+      },
+      {
+        "entity_name": "Town of Ravenel",
+        "listing_type": "html list",
+        "outcome": "turned away (challenge page)",
+        "status": 403,
+        "url": "https://www.townofravenel.gov/rfps"
+      },
+      {
+        "entity_name": "Town of Andrews",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.townofandrews.sc.gov/page/view-current-bidrfqrfp"
+      },
+      {
+        "entity_name": "City of Woodruff",
+        "listing_type": "html list",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.cityofwoodruff.com/business/bid_opportunities.php"
+      },
+      {
+        "entity_name": "City of Goose Creek",
+        "listing_type": "pdf links",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.goosecreeksc.gov/government/vendor-solicitations"
+      },
+      {
+        "entity_name": "McCormick County",
+        "listing_type": "pdf links",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.mccormickcountysc.org/how_do_i/rfp_rfq_request.php"
+      },
+      {
+        "entity_name": "Bamberg County",
+        "listing_type": "pdf links",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.bambergcounty.sc.gov/projects-and-bids"
+      },
+      {
+        "entity_name": "Town of Atlantic Beach",
+        "listing_type": "pdf links",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.townofatlanticbeachsc.com/page/Request%20for%20Proposal"
+      },
+      {
+        "entity_name": "City of Chesnee",
+        "listing_type": "pdf links",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.cityofchesnee.org/bids"
+      },
+      {
+        "entity_name": "City of Simpsonville",
+        "listing_type": "news posts",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.simpsonville.com/rfps/"
+      },
+      {
+        "entity_name": "City of Pickens",
+        "listing_type": "news posts",
+        "outcome": "error",
+        "status": null,
+        "url": "https://cityofpickens.com/category/request-for-proposal/"
+      },
+      {
+        "entity_name": "Spartanburg School District 5",
+        "listing_type": "iframe or embedded portal",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.spart5.net/page/procurement-services"
+      },
+      {
+        "entity_name": "Cherokee County School District",
+        "listing_type": "iframe or embedded portal",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.cherokee1.org/page/solicitations"
+      },
+      {
+        "entity_name": "City of Dillon",
+        "listing_type": "iframe or embedded portal",
+        "outcome": "loads",
+        "status": 200,
+        "url": "https://www.cityofdillonsc.gov/RFPsolicitations"
+      }
+    ],
+    "run_at": "2026-11-09T02:51:42+00:00"
   },
   "sources": [
     {
