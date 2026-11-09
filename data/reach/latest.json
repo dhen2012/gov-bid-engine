@@ -14,7 +14,7 @@
       "listing_type": "html list",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.2,
+      "seconds": 0.18,
       "server": "cloudflare",
       "status": 200,
       "url": "https://monckscornersc.gov/business/current-bids-projects"
@@ -28,7 +28,7 @@
       "listing_type": "html list",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.14,
+      "seconds": 0.12,
       "server": "LiteSpeed",
       "status": 200,
       "url": "https://ncsd.sc.gov/current-bid-opportunities/"
@@ -42,7 +42,7 @@
       "listing_type": "html list",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.19,
+      "seconds": 0.17,
       "server": "nginx",
       "status": 200,
       "url": "https://www.jamesislandsc.us/current-bids"
@@ -56,7 +56,7 @@
       "listing_type": "html list",
       "outcome": "loads",
       "robots": "robots.txt status 404; treated as allowed",
-      "seconds": 0.03,
+      "seconds": 0.05,
       "server": "",
       "status": 200,
       "url": "https://www.cheraw.com/government/business_opportunities.php"
@@ -70,7 +70,7 @@
       "listing_type": "html list",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.08,
+      "seconds": 0.59,
       "server": "",
       "status": 200,
       "url": "https://www.ccprc.com/bids/"
@@ -84,7 +84,7 @@
       "listing_type": "html list",
       "outcome": "loads",
       "robots": "robots.txt status 404; treated as allowed",
-      "seconds": 0.03,
+      "seconds": 0.04,
       "server": "",
       "status": 200,
       "url": "https://www.townofpatrick.com/government/invitations_to_bid.php"
@@ -126,7 +126,7 @@
       "listing_type": "html list",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.68,
+      "seconds": 0.38,
       "server": "",
       "status": 200,
       "url": "https://www.townofandrews.sc.gov/page/view-current-bidrfqrfp"
@@ -154,7 +154,7 @@
       "listing_type": "pdf links",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.39,
+      "seconds": 0.34,
       "server": "cloudflare",
       "status": 200,
       "url": "https://www.goosecreeksc.gov/government/vendor-solicitations"
@@ -168,7 +168,7 @@
       "listing_type": "pdf links",
       "outcome": "loads",
       "robots": "robots.txt status 404; treated as allowed",
-      "seconds": 0.07,
+      "seconds": 0.06,
       "server": "",
       "status": 200,
       "url": "https://www.mccormickcountysc.org/how_do_i/rfp_rfq_request.php"
@@ -182,7 +182,7 @@
       "listing_type": "pdf links",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.2,
+      "seconds": 16.83,
       "server": "nginx",
       "status": 200,
       "url": "https://www.bambergcounty.sc.gov/projects-and-bids"
@@ -196,7 +196,7 @@
       "listing_type": "pdf links",
       "outcome": "loads",
       "robots": "robots.txt status 404; treated as allowed",
-      "seconds": 0.05,
+      "seconds": 0.04,
       "server": "",
       "status": 200,
       "url": "https://www.townofatlanticbeachsc.com/page/Request%20for%20Proposal"
@@ -210,7 +210,7 @@
       "listing_type": "pdf links",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.38,
+      "seconds": 0.32,
       "server": "cloudflare",
       "status": 200,
       "url": "https://www.cityofchesnee.org/bids"
@@ -224,7 +224,7 @@
       "listing_type": "news posts",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 2.25,
+      "seconds": 0.18,
       "server": "cloudflare",
       "status": 200,
       "url": "https://www.simpsonville.com/rfps/"
@@ -249,7 +249,7 @@
       "listing_type": "iframe or embedded portal",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.72,
+      "seconds": 0.78,
       "server": "",
       "status": 200,
       "url": "https://www.spart5.net/page/procurement-services"
@@ -263,7 +263,7 @@
       "listing_type": "iframe or embedded portal",
       "outcome": "loads",
       "robots": "robots.txt allows",
-      "seconds": 0.45,
+      "seconds": 0.68,
       "server": "",
       "status": 200,
       "url": "https://www.cherokee1.org/page/solicitations"
@@ -283,7 +283,7 @@
       "url": "https://www.cityofdillonsc.gov/RFPsolicitations"
     }
   ],
-  "run_at": "2026-11-09T02:51:42+00:00",
+  "run_at": "2026-11-09T02:55:35+00:00",
   "run_date_et": "2026-11-08",
   "sample_size": 20,
   "user_agent": "GovBidEngine/0.1 (public government bid collector; +https://github.com/dhen2012/gov-bid-engine)"
