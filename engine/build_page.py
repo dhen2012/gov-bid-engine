@@ -40,6 +40,8 @@ def main() -> None:
     html = TEMPLATE.read_text(encoding="utf-8").replace("/*__DATA__*/null", payload)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(html, encoding="utf-8")
+    # WEB 4: the page is on a public address, so keep search engines out.
+    (OUT.parent / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
     print(f"built {OUT} with {len(bids)} bids")
 
 
