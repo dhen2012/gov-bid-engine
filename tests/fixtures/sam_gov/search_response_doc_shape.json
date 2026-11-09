@@ -1,0 +1,12 @@
+{"totalRecords": 2, "limit": 1000, "offset": 0, "opportunitiesData": [
+ {"noticeId": "abc123def456", "title": "Website Redesign and Hosting Services", "solicitationNumber": "W912QR26R0001",
+  "fullParentPathName": "DEPT OF DEFENSE.DEPT OF THE ARMY.W071 ENDIST LOUISVILLE", "postedDate": "2026-11-07",
+  "type": "Combined Synopsis/Solicitation", "typeOfSetAsideDescription": "Total Small Business Set-Aside (FAR 19.5)",
+  "responseDeadLine": "2026-11-21T14:00:00-0500", "naicsCode": "541511", "classificationCode": "D399", "active": "Yes",
+  "placeOfPerformance": {"city": {"name": "Charleston"}, "state": {"code": "SC"}},
+  "resourceLinks": ["https://sam.gov/api/prod/opps/v3/opportunities/resources/files/x/download"]},
+ {"noticeId": "zzz999", "title": "Sources Sought: Janitorial", "solicitationNumber": "",
+  "department": "GENERAL SERVICES ADMINISTRATION", "postedDate": "2026-11-08", "type": "Sources Sought",
+  "reponseDeadLine": "2026-11-01", "naicsCode": "561720", "active": "Yes",
+  "officeAddress": {"city": "Atlanta", "state": "GA"}}
+]}

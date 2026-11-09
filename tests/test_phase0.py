@@ -34,8 +34,8 @@ def test_sources_table_has_required_columns():
 def test_page_builds_self_contained(tmp_path, monkeypatch):
     from engine import build_page
     out = tmp_path / "index.html"
-    monkeypatch.setattr(build_page, "OUT", out)
-    build_page.main()
+    build_page.main(out=out, status_path=tmp_path / "status.json")
+    assert (tmp_path / "bids.json").exists()
     html = out.read_text(encoding="utf-8")
     for tag in ("<!doctype html>", "<html", "<head>", "<body>", "</html>"):
         assert tag in html

@@ -43,6 +43,15 @@ def run_collector(src: dict, run_date: str) -> dict:
     return rec
 
 
+def run_store() -> dict:
+    """Cleanup and merge (engine/store.py) in its own process."""
+    p = subprocess.run([sys.executable, "-m", "engine.store"], cwd=ROOT, capture_output=True, text=True, timeout=1800)
+    print(p.stdout[-2000:], p.stderr[-2000:])
+    line = next((l for l in p.stdout.splitlines() if l.startswith("STORE ")), "")
+    return {"result": "ok" if p.returncode == 0 else "error",
+            "summary": json.loads(line[6:]) if line else {}}
+
+
 def run_reach_test() -> dict:
     p = subprocess.run(
         [sys.executable, "-m", "engine.reach_test"], cwd=ROOT, capture_output=True, text=True, timeout=1800
@@ -69,10 +78,12 @@ def main() -> int:
         print(json.dumps({k: v for k, v in rec.items() if k != "log_tail"}))
         record["collectors"].append(rec)
 
+    record["store"] = run_store()
     record["reach_test"] = run_reach_test()
     record["end"] = now_utc().isoformat()
     record["result"] = (
-        "ok" if all(c["result"] == "ok" for c in record["collectors"]) else "partial"
+        "ok" if all(c["result"] == "ok" for c in record["collectors"]) and record["store"]["result"] == "ok"
+        else "partial"
     )
     # One record per run; a second run on the same day keeps both.
     runs_dir = DATA / "runs"

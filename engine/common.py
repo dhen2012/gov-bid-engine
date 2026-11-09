@@ -33,9 +33,13 @@ def load_sources() -> list[dict]:
         return list(csv.DictReader(f))
 
 
-def write_json(path: Path, obj) -> None:
+def write_json(path: Path, obj, compact: bool = False) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    if compact:
+        text = json.dumps(obj, separators=(",", ":"), sort_keys=True)
+    else:
+        text = json.dumps(obj, indent=2, sort_keys=True)
+    path.write_text(text + "\n", encoding="utf-8")
 
 
 def read_json(path: Path, default=None):

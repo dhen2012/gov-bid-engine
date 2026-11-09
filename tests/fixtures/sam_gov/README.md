@@ -1,0 +1,1 @@
+search_response_doc_shape.json is built by hand from the field list and example on open.gsa.gov (Get Opportunities Public API). It is not a captured live response. Replace it with a real saved response from the first phase 1 run (TST 1).

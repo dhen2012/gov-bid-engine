@@ -30,7 +30,10 @@ jobs:
       - name: Tests (a failing test stops the run before anything publishes)
         run: python -m pytest -q
 
-      - name: Collectors and reach test
+      - name: NAICS code list (downloads once from census.gov)
+        run: python -m scripts.fetch_naics
+
+      - name: Collectors, merge and reach test
         env:
           SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
         run: python -m engine.run_daily
@@ -42,7 +45,7 @@ jobs:
         run: |
           git config user.name "gov-bid-engine bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data public
+          git add data public config/naics_2022.csv 2>/dev/null || git add data public
           git commit -m "Daily run ${{ github.run_id }} (${{ github.event_name }})" || echo "nothing to commit"
           git pull --rebase origin main
           git push origin HEAD:main
