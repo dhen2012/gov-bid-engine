@@ -1,0 +1,46 @@
+{
+  "built_at": "2026-11-09T02:50:42+00:00",
+  "last_run": {
+    "end": null,
+    "result": null,
+    "run_id": null,
+    "start": null,
+    "trigger": null
+  },
+  "new_today": 0,
+  "reach_test": {
+    "counts": {},
+    "results": [],
+    "run_at": null
+  },
+  "sources": [
+    {
+      "avg7": null,
+      "channel": "API (off until phase 1)",
+      "enabled": false,
+      "flag": "",
+      "name": "SAM.gov Contract Opportunities",
+      "source_id": "sam_gov",
+      "today": null
+    },
+    {
+      "avg7": null,
+      "channel": "page (off until phase 2)",
+      "enabled": false,
+      "flag": "",
+      "name": "SC agency own website bid pages (131 Opus verified)",
+      "source_id": "sc_agency_pages",
+      "today": null
+    },
+    {
+      "avg7": null,
+      "channel": "not collected (off until phase 3)",
+      "enabled": false,
+      "flag": "",
+      "name": "South Carolina Business Opportunities",
+      "source_id": "scbo",
+      "today": null
+    }
+  ],
+  "total_bids": 0
+}

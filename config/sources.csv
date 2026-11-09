@@ -1,0 +1,4 @@
+source_id,name,layer,collector,base_url,states,read_method,channel,wait_seconds,pace_seconds,enabled,phase,review_file,notes
+sam_gov,SAM.gov Contract Opportunities,federal,sam_gov,https://api.sam.gov/opportunities/v2/search,ALL,api,API,0,1,no,1,docs/sources/sam_gov.md,Turned on in phase 1 after the SAM_GOV_API_KEY secret exists and the source review is written
+sc_agency_pages,SC agency own website bid pages (131 Opus verified),agency web,agency_page,config/sc_verified_bid_pages.csv,SC,page,page,3,2,no,2,docs/sources/sc_agency_pages.md,Phase 2; reach measured nightly by the phase 0 reach test
+scbo,South Carolina Business Opportunities,state,scbo,https://scbo.sc.gov,SC,page,not collected,0,2,no,3,docs/sources/scbo.md,Phase 3; source review not written yet

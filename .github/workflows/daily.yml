@@ -1,0 +1,55 @@
+name: daily
+
+on:
+  schedule:
+    # Every day at 03:37 UTC (10:37 pm Eastern standard time, 11:37 pm daylight time).
+    - cron: "37 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Tests (a failing test stops the run before anything publishes)
+        run: python -m pytest -q
+
+      - name: Collectors and reach test
+        env:
+          SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
+        run: python -m engine.run_daily
+
+      - name: Build page
+        run: python -m engine.build_page
+
+      - name: Save data and page to the repo
+        run: |
+          git config user.name "gov-bid-engine bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data public
+          git commit -m "Daily run ${{ github.run_id }} (${{ github.event_name }})" || echo "nothing to commit"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Upload page
+        uses: actions/upload-artifact@v4
+        with:
+          name: gov-bid-engine-page
+          path: public/index.html
+          retention-days: 14

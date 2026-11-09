@@ -1,0 +1,21 @@
+entity_id,entity_name,scrape_url,listing_type,notes
+SC0376,Town of Moncks Corner,https://monckscornersc.gov/business/current-bids-projects,html list,sections by solicitation type
+SC0649,North Charleston Sewer District,https://ncsd.sc.gov/current-bid-opportunities/,html list,"sections for ITBs, RFPs, RFQs and future bid openings"
+SC0334,Town of James Island,https://www.jamesislandsc.us/current-bids,html list,closed bids on a separate page in same menu
+SC0262,Town of Cheraw,https://www.cheraw.com/government/business_opportunities.php,html list,"current and past items mixed, dated by ad date"
+SC0644,Charleston County Park and Recreation Commission,https://www.ccprc.com/bids/,html list,Simpleview CMS; bid cards load by script after the policy text (get_page_text returned nothing); each bid is a /listing/ detail page; no due dates on the card text
+SC0400,Town of Patrick,https://www.townofpatrick.com/government/invitations_to_bid.php,html list,"empty now; Revize site (not Stratatomic); 5 iframes all blank with no src, none hold bids"
+SC0313,City of Greenwood,https://www.cityofgreenwoodsc.com/departments/procurement/current_projects_new.php,html list,bid results on separate sibling page
+SC0416,Town of Ravenel,https://www.townofravenel.gov/rfps,html list,Open and Closed tabs
+SC0228,Town of Andrews,https://www.townofandrews.sc.gov/page/view-current-bidrfqrfp,html list,full ad text inline on page
+SC0492,City of Woodruff,https://www.cityofwoodruff.com/business/bid_opportunities.php,html list,forcemain bid documents hosted on questcdn.com; no dates in text
+SC0307,City of Goose Creek,https://www.goosecreeksc.gov/government/vendor-solicitations,pdf links,"items are project headings with document links (IFB, RFP, Q and A, bid sheet); get_page_text reads them, the summary script missed them because they sit in a section not matched by main; Archived Projects is a separate page"
+SC0182,McCormick County,https://www.mccormickcountysc.org/how_do_i/rfp_rfq_request.php,pdf links,"document list loads after page script runs; no dates in link text, no recent items can be confirmed"
+SC0152,Bamberg County,https://www.bambergcounty.sc.gov/projects-and-bids,pdf links,C Fund project bids are posted on SCBO per page note
+SC0230,Town of Atlantic Beach,https://www.townofatlanticbeachsc.com/page/Request%20for%20Proposal,pdf links,page also mentions BidNet; no due dates in summary
+SC0263,City of Chesnee,https://www.cityofchesnee.org/bids,pdf links,redirects to /bids/ with trailing slash; single link
+SC0439,City of Simpsonville,https://www.simpsonville.com/rfps/,news posts,"WordPress post type archive named Bid/RFP Archive; this is the live listing, one post, no dates in text; no other bid link found in menus"
+SC0408,City of Pickens,https://cityofpickens.com/category/request-for-proposal/,news posts,WordPress category archive of RFP posts; no dates in text
+SC0557,Spartanburg School District 5,https://www.spart5.net/page/procurement-services,iframe or embedded portal,given FY25 documents folder is a past fiscal year archive with no files; current page is /page/procurement-services. Beacon (beaconbid.com); scrape iframe src https://www.beaconbid.com/integrations/widget/spartanburg-district-five
+SC0509,Cherokee County School District,https://www.cherokee1.org/page/solicitations,iframe or embedded portal,Beacon (beaconbid.com); scrape the iframe src https://www.beaconbid.com/integrations/widget/cherokee-county-school-district directly; open list also at beaconbid.com/solicitations/cherokee-county-school-district/open
+SC0280,City of Dillon,https://www.cityofdillonsc.gov/RFPsolicitations,iframe or embedded portal,"Munibit; items render inside a shadow DOM custom element (MWJSRESOURCES-OBJ2), invisible to innerText and get_page_text; read element.shadowRoot.textContent"
