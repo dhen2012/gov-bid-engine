@@ -1,0 +1,17 @@
+{
+  "collectors": [],
+  "end": "2026-11-09T12:02:42+00:00",
+  "reach_test": {
+    "counts": {
+      "error": 1,
+      "loads": 18,
+      "turned away (challenge page)": 1
+    },
+    "result": "ok"
+  },
+  "result": "ok",
+  "run_date_et": "2026-11-09",
+  "run_id": "42613670910",
+  "start": "2026-11-09T12:02:20+00:00",
+  "trigger": "schedule"
+}

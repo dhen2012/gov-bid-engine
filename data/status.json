@@ -1,11 +1,11 @@
 {
-  "built_at": "2026-11-09T02:55:35+00:00",
+  "built_at": "2026-11-09T12:02:42+00:00",
   "last_run": {
-    "end": "2026-11-09T02:55:35+00:00",
+    "end": "2026-11-09T12:02:42+00:00",
     "result": "ok",
-    "run_id": "42553493037",
-    "start": "2026-11-09T02:55:02+00:00",
-    "trigger": "workflow_dispatch"
+    "run_id": "42613670910",
+    "start": "2026-11-09T12:02:20+00:00",
+    "trigger": "schedule"
   },
   "new_today": 0,
   "reach_test": {
@@ -156,7 +156,7 @@
         "url": "https://www.cityofdillonsc.gov/RFPsolicitations"
       }
     ],
-    "run_at": "2026-11-09T02:55:35+00:00"
+    "run_at": "2026-11-09T12:02:42+00:00"
   },
   "sources": [
     {
