@@ -79,6 +79,8 @@ def main() -> int:
         record["collectors"].append(rec)
 
     record["store"] = run_store()
+    if os.environ.get("RUN_SAM_PROBE") == "1":
+        subprocess.run([sys.executable, "-m", "engine.sam_probe"], cwd=ROOT, timeout=300)
     record["reach_test"] = run_reach_test()
     record["end"] = now_utc().isoformat()
     record["result"] = (

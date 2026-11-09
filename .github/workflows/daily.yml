@@ -36,6 +36,7 @@ jobs:
       - name: Collectors, merge and reach test
         env:
           SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
+          RUN_SAM_PROBE: "1"
         run: python -m engine.run_daily
 
       - name: Build page
