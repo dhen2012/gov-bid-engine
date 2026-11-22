@@ -1,18 +1,18 @@
 {
-  "built_at": "2026-11-21T11:41:30+00:00",
+  "built_at": "2026-11-22T11:55:32+00:00",
   "last_run": {
-    "end": "2026-11-21T11:41:30+00:00",
+    "end": "2026-11-22T11:55:32+00:00",
     "result": "ok",
-    "run_id": "44900269461",
-    "start": "2026-11-21T11:41:19+00:00",
+    "run_id": "45019633602",
+    "start": "2026-11-22T11:55:17+00:00",
     "trigger": "schedule"
   },
   "new_today": 0,
   "reach_test": {
     "counts": {
       "error": 1,
-      "loads": 17,
-      "turned away (challenge page)": 2
+      "loads": 18,
+      "turned away (challenge page)": 1
     },
     "results": [
       {
@@ -46,8 +46,8 @@
       {
         "entity_name": "Charleston County Park and Recreation Commission",
         "listing_type": "html list",
-        "outcome": "turned away (challenge page)",
-        "status": 403,
+        "outcome": "loads",
+        "status": 200,
         "url": "https://www.ccprc.com/bids/"
       },
       {
@@ -89,7 +89,7 @@
         "entity_name": "City of Goose Creek",
         "listing_type": "pdf links",
         "outcome": "loads",
-        "status": 202,
+        "status": 200,
         "url": "https://www.goosecreeksc.gov/government/vendor-solicitations"
       },
       {
@@ -156,7 +156,7 @@
         "url": "https://www.cityofdillonsc.gov/RFPsolicitations"
       }
     ],
-    "run_at": "2026-11-21T11:41:30+00:00"
+    "run_at": "2026-11-22T11:55:32+00:00"
   },
   "sources": [
     {
