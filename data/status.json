@@ -1,17 +1,18 @@
 {
-  "built_at": "2026-11-24T14:12:43+00:00",
+  "built_at": "2026-11-25T13:25:26+00:00",
   "last_run": {
-    "end": "2026-11-24T14:12:43+00:00",
+    "end": "2026-11-25T13:25:26+00:00",
     "result": "ok",
-    "run_id": "45411482481",
-    "start": "2026-11-24T14:12:28+00:00",
+    "run_id": "45623356475",
+    "start": "2026-11-25T13:25:12+00:00",
     "trigger": "schedule"
   },
   "new_today": 0,
   "reach_test": {
     "counts": {
       "error": 1,
-      "loads": 18,
+      "loads": 17,
+      "not found": 1,
       "turned away (challenge page)": 1
     },
     "results": [
@@ -144,8 +145,8 @@
       {
         "entity_name": "Cherokee County School District",
         "listing_type": "iframe or embedded portal",
-        "outcome": "loads",
-        "status": 200,
+        "outcome": "not found",
+        "status": 404,
         "url": "https://www.cherokee1.org/page/solicitations"
       },
       {
@@ -156,7 +157,7 @@
         "url": "https://www.cityofdillonsc.gov/RFPsolicitations"
       }
     ],
-    "run_at": "2026-11-24T14:12:43+00:00"
+    "run_at": "2026-11-25T13:25:26+00:00"
   },
   "sources": [
     {
